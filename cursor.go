@@ -11,6 +11,16 @@ func escape(format string, args ...interface{}) string {
 	return fmt.Sprintf("%s%s", Esc, fmt.Sprintf(format, args...))
 }
 
+// Show returns ANSI escape sequence to show the cursor
+func Show() string {
+	return escape("[?25h")
+}
+
+// Hide returns ANSI escape sequence to hide the cursor
+func Hide() string {
+	return escape("[?25l")
+}
+
 // MoveTo returns ANSI escape sequence to move cursor
 // to specified position on screen.
 func MoveTo(line, col int) string {
